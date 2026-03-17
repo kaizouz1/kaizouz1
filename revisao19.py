@@ -10,11 +10,13 @@ class Produto:
         self.__preco = preco
 
     def set_preco(self, valor):
-        if valor >= 0:
-            self.__preco += valor
-        print(self.__preco)
+        if valor > 0:
+            self.__preco = valor
+
+    def get_preco(self):
+        return self.__preco
 
 
-p = Produto(300)
+p = Produto(100)
 p.set_preco(-200)
-print(p.set_preco)
+print(p.get_preco())
