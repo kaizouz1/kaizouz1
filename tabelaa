@@ -4,39 +4,48 @@ def limpar():
 limpar()
 from rich import print
 from rich.panel import Panel
-
+from time import sleep
 
 # 2:
 while True:
     conteudo = ( 
-    "===== Menu =====\n"
-    "1 –  Jogo do dado"
-    "2 – Cálculo de Raiz e Potência"
-    "3 – Manipulação de Texto"
-    "4 – Sair")
+    "1 – Jogo do dado\n"
+    "2 – Cálculo de Raiz e Potência\n"
+    "3 – Manipulação de Texto\n"
+    "4 - POO\n"
+    "5 – Sair")
+    painel = Panel(conteudo, title=" Menu ")
+    print(painel)
 
     # 3:
   
     opcao = (input("Selecione uma opção: "))
+     
 
     if opcao == "1":
         limpar()
         from random import randint
         from time import sleep
-        dado = randint(1,60)
+        lado1 = int(input("O dado deve começar pelo número: "))
+        lado2 = int(input("e vai sortear até o número: "))
+        dado = randint(lado1,lado2)
         print("Você jogou o dado..")
         sleep(2)
         print(f"O dado caiu no número {dado}")
         sleep(2)
-        
+        limpar()
 
+        
     # 4:
+    
     elif opcao == "2":
+     
      limpar()
      import math 
      from time import sleep
-     print("1 – Raiz")
-     print("2 – Potencia")
+     tela =("""print("1 – Raiz")\nprint("2 – Potencia")""")
+     painel = Panel(tela, title="Cálculo de Raiz e Potência")
+     print(painel)
 
      expressao = input("Escolha qual expressão matemática utilizara: ")
      if expressao == "1":
@@ -55,12 +64,16 @@ while True:
          resultado = math.pow(base, expoente)
          print(f"{base} elevado a {expoente} = {resultado}\n")
     
+     
+     
+    
     # 5:
      
     elif opcao == "3":
       from time import sleep
       limpar()
-      print("===== Manipulação De Texto =====\n")
+      tela = (""")
+      print("===== Manipulação De Texto =====\n")""")
       texto = input("Digite um texto: ")
       print(f"{texto} em maiúsculo:", texto.upper())
       sleep(1)
@@ -70,9 +83,78 @@ while True:
       sleep(1)
       print(f"A quantidade de caracteres de {texto} é", len(texto))
       sleep(1)
-
-    # 6:
+      
     elif opcao == "4":
+        limpar()
+        tela = ("1 - Apresentação Pessoal\n2 - Banco")
+        painel = Panel(tela, title="Programação Orientada à Objetos")
+        print(painel)
+        
+        poo = input("Escolha uma opção de POO:")
+        
+        if poo == "1":
+  
+         limpar()
+         class Pessoa:
+            def __init__(self, nome, idade, cidade, profissao):
+                self.nome = input("Digite o nome: ")
+                self.idade = input("Digite sua idade: ")
+                self.profissao = input("Digite sua profissao: ")
+                self.cidade = input("Digite sua cidade: ")
+    
+            def apresentar(self):
+                limpar()
+                print(f"Eu me chamo {self.nome} e tenho {self.idade} anos. Sou um {self.profissao} e moro na cidade de {self.cidade}")
+            
+         pessoa1 = Pessoa("Carlos", 25, "Vitoria", "programador")
+         pessoa1.apresentar()
+         sleep(1)
+        
+        elif poo == "2":
+         class Banco:
+                def __init__(self, titular, saldo):
+                    self.titular = input("Digite seu nome: ")
+                    self.saldo = saldo
+                tela = (f"1 - Depositar\n2 - Sacar")
+                painel = Panel(tela, title="Opções")
+                print(painel)
+                opcao  = input("Digite sua escolha: ")
+                
+                
+                if opcao == "1":
+                 def depositar(self, saldo):
+                    limpar()
+                    saldo = int(input(f"Quantos reais deseja depositar sr(a){self.titular}: "))
+                    sleep(1)
+                    print(f"Saldo Depositado com sucesso!")
+                    self.saldo += saldo
+                 print(banco1.depositar(0))
+ 
+                else:
+                 def sacar(self, valor):
+                    print(f"Saldo da conta: {self.saldo:.2f}")
+                    valor = input("Quantos reais deseja sacar: ")
+                    if valor > self.saldo:
+                        print("Saldo insuficiente!")
+                    else: 
+                        self.saldo -= valor
+                        return (f"Saque de R$ {valor:.2f} realizado")
+                print(banco1.sacar(0))
+                def exibir_saldo(self):
+                 return (f"Titular: {self.nome}\nSaldo:{self.saldo}")
+    
+         banco1 = Banco("Kaizou", 15000)
+         
+         
+         banco1.exibir_saldo()
+
+           
+        
+      
+      
+
+    # ?:
+    elif opcao == "5":
         limpar()
         print("Encerrando o sistema... Até logo!")
         break
